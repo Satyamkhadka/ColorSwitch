@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <style>
+    
+    .block {
+    width: 40%;
+    float: left;
+    height: 0;
+    padding-bottom: 40%;
+     
+  animation: 5s linear infinite rotate;
+  position: relative;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg)
+  }
+  to {
+    transform: rotate(360deg)
+  }
+}
+
+
+.one {
+  
+    border-left: 15px solid red;
+    border-top: 15px solid red;
+    border-radius:100% 0%  0% 0%;
+    transform-origin: 100% 100%;
+   
+}
+
+.two {
+   
+    border-top: 15px solid blue;
+     border-right: 15px solid blue;
+     border-radius:0% 100%  0% 0%;
+     transform-origin: 0% 100%;
+}
+
+.three {
+   
+    border-left: 15px solid yellow;
+     border-bottom: 15px solid yellow;
+     border-radius:0% 0%  0% 100%;
+     transform-origin: 100% 0%;
+}
+
+.four {
+
+     border-bottom: 15px solid green;
+      border-right: 15px solid green;
+      border-radius:0% 0%  100% 0%;
+      transform-origin: 0% 0%;
+}
+    
+         
+    </style>
+</head>
+<body>
+<div class="block one"></div>
+<div class="block two"></div>
+<div class="block three"></div>
+<div class="block four"></div>
+
+</body>
+</html>
+

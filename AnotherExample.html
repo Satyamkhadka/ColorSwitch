@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta charset="UTF-8">
+ 
+<head>
+         <title>StarWars</title>
+            <script type = "text/javascript">
+ 
+            function move(elem){
+                 var st=0;
+
+                console.log("ELEM "+elem);
+                        function animate(){
+                               
+                                st++;
+                                console.log(st);
+                                elem.style.left = st+'px';
+ 
+                                console.log("elem" + elem.style.left);
+                                console.log("reached here");
+                                 if (st == 100)  // check finish condition
+                                      clearInterval(id);
+ 
+                        }
+ 
+                        id = setInterval(animate, 10);
+ 
+ 
+                }
+ 
+ 
+                </script>
+ 
+                <style type="text/css">
+ 
+                        body{
+                                background-image:url('http://www.solosequenosenada.com/galeria/fondos/bgestels/bgstar17.gif');
+                       
+                                }
+ 
+                </style>
+ 
+ 
+</head>
+ 
+ 
+<body>
+ 
+<button onclick="move(text_ex)">Click</button>
+       
+<div id="text_ex" style="width:100px; height:100px; background-color:red; position: absolute;"></div>
+ 
+ 
+</body>
+ 
+</html>

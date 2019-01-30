@@ -1,0 +1,50 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="Color Switch" content="Some Game ">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="S4TY4M" content="game">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> what ever</title>
+</head>
+
+<body>
+
+    <script>
+
+        var ONE,TWO,THREE,FOUR;
+        var TWO_LOC;
+        var POS_OF_OBS;
+        var round = function () {
+
+            var circle = document.createElement('div');
+            var circle_offset_ver=0;
+            var circle_offset_hor=5;
+            var another_circle_offser_ver=circle_offset_ver-5;
+            var diam=180;
+            circle.style.background = 'red';
+            circle.style.height=diam+'px';
+            circle.style.width=diam+'px';
+            circle.style.borderRadius= '100% 0% 0% 0%';
+            document.body.appendChild(circle);
+            console.log("he;;ppp");
+            return circle;
+        }
+
+
+
+       // round();
+
+
+        function getPieces(){
+            ONE= round();
+            TWO=round();
+            TWO_LOC=parseInt(TWO.getAttribute('top'));
+            TWO.style.top=150+'px';    
+        }
+        getPieces();
+    </script>
+</body>
+
+</html>

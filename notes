@@ -1,0 +1,364 @@
+sudo service network-manager restart
+
+
+.doughnut { 
+    border-top: 50px solid #f00;
+    border-bottom: 50px solid green;
+    border-left: 50px solid purple;
+    border-right: 50px solid pink;
+    border-radius: 100px;
+    height:100px;
+    width:100px;
+}
+.rotate {
+  animation: 1s linear infinite rotate;
+  position: relative;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg)
+  }
+  to {
+    transform: rotate(360deg)
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.block {
+    width: 40%;
+    float: left;
+    height: 0;
+    padding-bottom: 40%;
+     
+  animation: 1s linear infinite rotate;
+  position: relative;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg)
+  }
+  to {
+    transform: rotate(360deg)
+  }
+}
+
+
+.one {
+  
+    border-left: 15px solid red;
+    border-top: 15px solid red;
+    border-radius:100% 0%  0% 0%;
+    transform-origin: 100% 100%;
+   
+}
+
+.two {
+   
+    border-top: 15px solid blue;
+     border-right: 15px solid blue;
+     border-radius:0% 100%  0% 0%;
+     transform-origin: 0% 100%;
+}
+
+.three {
+   
+    border-left: 15px solid yellow;
+     border-bottom: 15px solid yellow;
+     border-radius:0% 0%  0% 100%;
+     transform-origin: 100% 0%;
+}
+
+.four {
+
+     border-bottom: 15px solid green;
+      border-right: 15px solid green;
+      border-radius:0% 0%  100% 0%;
+      transform-origin: 0% 0%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.block {
+    width: 45%;
+    float: left;
+    height: 0;
+    padding-bottom: 50%;
+     
+}
+
+.one {
+    background: yellow;
+    border-left: 5px solid green;
+    border-top: 5px solid green;
+    border-radius:100% 0%  0% 0%;
+   
+}
+
+.two {
+    background: lightblue;
+    border-top: 5px solid green;
+     border-right: 5px solid green;
+     border-radius:0% 100%  0% 0%;
+}
+
+.three {
+    background: orange;
+    border-left: 5px solid green;
+     border-bottom: 5px solid green;
+     border-radius:0% 0%  0% 100%;
+}
+
+.four {
+    background: red;
+     border-bottom: 5px solid green;
+      border-right: 5px solid green;
+      border-radius:0% 0%  100% 0%;
+}
+<div class="block one">1</div>
+<div class="block two">2</div>
+<div class="block three">3</div>
+<div class="block four">4</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="Color Switch" content="Some Game ">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="S4TY4M" content="game">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="obstacles.js"></script> 
+    <title> ColorSwitcher</title>
+    <style>
+    #rotatethis {
+  
+  border-left: 15px solid red;
+  border-top: 15px solid red;
+  border-radius:100% 0%  0% 0%;
+  transform-origin: 100% 100%;
+ 
+}
+    
+    </style>
+
+</head>
+
+<body>
+    <script>
+        var BALL_OBJ;
+        var BACKGROUND_OBJ;
+        var JUMP_BTN;
+        var BALL_LOC;
+        var FRAME_HEIGHT = 512;
+        var FRAME_WIDTH = 320;
+        var FRAME_OFFSET_HOR = 500;
+        var BALL_DIAM = 20;
+        var FRAME_OFFSET_VER = 30; // at least for now;
+        var BALL_OFFSET_HOR = FRAME_OFFSET_HOR + (FRAME_WIDTH / 2) - (BALL_DIAM / 2);
+        var BALL_OFFSET_INIT_VERT = FRAME_OFFSET_VER + FRAME_HEIGHT - 120;
+
+        var BALL_OUT_ZONE = FRAME_OFFSET_VER + FRAME_HEIGHT;
+        var BALL_SPEED = 1; // in ms
+        //var BALL_DIR = true;
+        var CLICKLISTENER;
+        var ID;
+        var JUMP_HEIGHT = 50;
+        document.body.onkeydown= function(e){
+            if(e.keyCode == 32){
+                clickManager();
+            }
+        }
+
+        function gogogo() {
+            var BALL_LOC = parseInt(BALL_OBJ.style.top);
+            var jump_up = 0;
+            var jump_down = BALL_LOC;
+            var out = FRAME_OFFSET_VER + FRAME_HEIGHT - BALL_DIAM;
+            // CLICKLISTENER = false; // click is being served
+
+
+            ID = setInterval(animate, BALL_SPEED);
+
+            function animate() {
+                //let ball_obj = BALL_OBJ;
+                console.log("value of ball : " + BALL_LOC);
+                BALL_OBJ.style.top = BALL_LOC + 'px';
+
+                if (jump_up <= JUMP_HEIGHT && jump_up >= 0) {
+                    BALL_LOC--;
+                    jump_up++;
+                    console.log("top");
+                } else if (BALL_LOC >= 0 && BALL_LOC <= out) {
+                    BALL_LOC++;
+                    console.log("bottom");
+
+                }
+
+                if ((BALL_LOC) <= (FRAME_OFFSET_VER+1) || BALL_LOC >= out) { // check finish condition
+                    clearInterval(ID);
+                    alert("YOU'RE OUT!");
+                    console.log(BALL_OBJ);
+                reset();
+                    console.log(" clea  cleared");
+                }
+
+            }
+            //id = setInterval(animate, 100);
+        }
+
+        var createPlayerPiece = function () {
+            //var TOP_MARGIN = 20; //20 pixel top compensensation 
+            player_piece = document.createElement("div");
+            //var player_piece = BALL_OBJ;
+            player_piece.id = 'ball';
+            player_piece.style.width = BALL_DIAM + 'px';
+            player_piece.style.height = BALL_DIAM + 'px';
+            player_piece.style.background = "red";
+            player_piece.style.position = "absolute";
+            player_piece.style.top = BALL_OFFSET_INIT_VERT + 'px'; // initial
+            player_piece.style.left = FRAME_OFFSET_HOR + (FRAME_WIDTH / 2) - (BALL_DIAM / 2) + 'px'; //initial : left+ adding playablearea;s half and subb objects half 
+            player_piece.style.borderRadius = "50%";
+
+            
+            return player_piece;
+            //document.body.appendChild(BALL_OBJ);
+        }
+        var reset= function(){
+                BALL_OBJ.style.top=BALL_OFFSET_INIT_VERT;
+               // document.body.removeChild(BALL_OBJ);
+                console.log("resetttttttttttttttttttttttttttttted");
+            }
+
+        function insertIntoDom() {
+            document.body.appendChild(BALL_OBJ);
+        }
+        initialize();
+
+        function initialize() {
+            createFrame();
+            BALL_OBJ = new createPlayerPiece();
+            insertIntoDom();
+            createButton();
+        }
+
+        function createFrame() {
+            BACKGROUND_OBJ = document.createElement("div");
+            background = BACKGROUND_OBJ;
+            background.style.zIndex = "-1";
+            background.style.background = "black";
+            background.style.width = FRAME_WIDTH + 'px';
+            background.style.height = FRAME_HEIGHT + 'px';
+            background.style.position = "absolute";
+            background.style.top = FRAME_OFFSET_VER+"px"; // initial
+            background.style.left = FRAME_OFFSET_HOR + 'px'; //initial
+            background.style.borderRadius = "2%";
+            document.body.appendChild(background);
+            background.addEventListener("mousedown", clickManager);
+        }
+
+        function createButton(ball) {
+            JUMP_BTN = document.createElement("button");
+            jumpButton = JUMP_BTN;
+            jumpButton.style.position = "absolute";
+            jumpButton.style.width = "80px";
+            jumpButton.style.height = "30px";
+            jumpButton.style.top = FRAME_HEIGHT +FRAME_OFFSET_VER+24 + 'px';
+            jumpButton.style.left = FRAME_OFFSET_HOR + (FRAME_WIDTH / 2) - 40 + 'px'; //40 is half of the buttons width
+            jumpButton.innerHTML = "PUSHH!";
+            document.body.appendChild(jumpButton);
+            jumpButton.addEventListener("mousedown", clickManager);
+        }
+
+        function clickManager() {
+            if (ID) {
+                clearInterval(ID);
+                gogogo();
+            } else{ 
+                gogogo();
+            }
+
+        }
+
+       // check();
+        var s=new Obstacle(5);
+        s.setRandomColors();
+    </script>
+    <div id='rotatethis'></div>
+</body>
+
+</html>
